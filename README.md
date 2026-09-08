@@ -123,7 +123,7 @@ If an agent fails, the workflow moves to FAILED.
 Clone the repository and enter the project directory:
 
 
-git clone <your-repository-url>
+git clone https://github.com/linajawad/AgentOps.git
 cd AgentOps
 
 
