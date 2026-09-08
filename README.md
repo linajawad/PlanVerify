@@ -1,25 +1,25 @@
  AgentOps — Multi-Agent AI Workflow
 
-A lightweight multi-agent AI workflow built with **Python** and **Google Gemini**.
+A lightweight multi-agent AI workflow built with Python and Google Gemini.
 
 AgentOps demonstrates how multiple specialized AI agents can work together through a structured workflow:
 
-Planner → Worker → Verifier**
+Planner → Worker → Verifier
 
-The project focuses on **AI agent orchestration, task planning, execution, verification, error handling, and automated testing**.
+The project focuses on AI agent orchestration, task planning, execution, verification, error handling, and automated testing.
 
 
 
  ✨ Features
 
-* 🧠 **Planner Agent** — Breaks a user task into practical execution steps.
-* ⚙️ **Worker Agent** — Executes the task using the generated plan.
-* 🔍 **Verifier Agent** — Validates the worker's result.
-* 🎯 **Orchestrator** — Coordinates the complete multi-agent workflow.
-* 🤖 **Gemini Integration** — Uses Google's Gemini API for AI-powered planning and execution.
-* 🧪 **Automated Testing** — Tests individual agents and the complete workflow.
-* 🔐 **Environment Configuration** — Keeps API credentials outside the source code.
-* 📊 **Task State Tracking** — Tracks workflow progress from planning through verification.
+* 🧠 Planner Agent — Breaks a user task into practical execution steps.
+* ⚙️ Worker Agent — Executes the task using the generated plan.
+* 🔍 Verifier Agent — Validates the worker's result.
+* 🎯 Orchestrator— Coordinates the complete multi-agent workflow.
+* 🤖 Gemini Integration — Uses Google's Gemini API for AI-powered planning and execution.
+* 🧪 Automated Testing — Tests individual agents and the complete workflow.
+* 🔐 Environment Configuration — Keeps API credentials outside the source code.
+* 📊 Task State Tracking — Tracks workflow progress from planning through verification.
 
 
 
@@ -55,7 +55,7 @@ The project focuses on **AI agent orchestration, task planning, execution, verif
                             │
                             ▼
                      Verified Result
-```
+
 
  Workflow States
 
@@ -151,15 +151,15 @@ AgentOps/
 
 🛠️ Technology Stack
 
-| Technology               | Purpose                         |
-| ------------------------ | ------------------------------- |
-| **Python 3.14+**         | Application and agent logic     |
-| **Google Gemini API**    | AI planning and task execution  |
-| **google-genai**         | Gemini API integration          |
-| **pytest**               | Automated testing               |
-| **python-dotenv**        | Environment variable management |
-| **Dataclasses**          | Structured application models   |
-| **REST/API Integration** | Communication with the AI model |
+| Technology          | Purpose                         |
+| --------------------| ------------------------------- |
+| Python 3.14+        | Application and agent logic     |
+| Google Gemini API   | AI planning and task execution  |
+| google-genai        | Gemini API integration          |
+| pytest              | Automated testing               |
+| python-dotenv       | Environment variable management |
+| Dataclasses         | Structured application models   |
+| REST/API Integratio | Communication with the AI model |
 
 
 
@@ -205,7 +205,7 @@ GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-3.6-flash
 
 
-Never commit your real API key to GitHub.**
+Never commit your real API key to GitHub.
 
 A .env.example file is included as a safe configuration template.
 
@@ -276,7 +276,7 @@ This project demonstrates practical experience with:
 
 Rather than relying on a single AI call, the system separates responsibilities across specialized agents.
 
-This makes the workflow easier to **test, verify, debug, and extend**.
+This makes the workflow easier to test, verify, debug, and extend.
 
 
 
