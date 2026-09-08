@@ -122,6 +122,7 @@ Verified Result
  📁 Project Structure
 
 
+```text
 AgentOps/
 ├── app/
 │   ├── agents/
@@ -144,6 +145,8 @@ AgentOps/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+```
+
 
 
 
