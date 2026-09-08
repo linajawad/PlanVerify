@@ -123,7 +123,6 @@ Verified Result
 
 
 AgentOps/
-│
 ├── app/
 │   ├── agents/
 │   │   ├── __init__.py
@@ -145,6 +144,7 @@ AgentOps/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+
 
 
 
