@@ -1,65 +1,65 @@
- AgentOps — Multi-Agent AI Workflow
+# AgentOps — Multi-Agent AI Workflow
 
 A lightweight multi-agent AI workflow built with Python and Google Gemini.
 
 AgentOps demonstrates how multiple specialized AI agents can work together through a structured workflow:
 
-Planner → Worker → Verifier
+**Planner → Worker → Verifier**
 
 The project focuses on AI agent orchestration, task planning, execution, verification, error handling, and automated testing.
 
+---
 
+## ✨ Features
 
- ✨ Features
+* 🧠 **Planner Agent** — Breaks a user task into practical execution steps.
+* ⚙️ **Worker Agent** — Executes the task using the generated plan.
+* 🔍 **Verifier Agent** — Validates the worker's result.
+* 🎯 **Orchestrator** — Coordinates the complete multi-agent workflow.
+* 🤖 **Gemini Integration** — Uses Google's Gemini API for AI-powered planning and execution.
+* 🧪 **Automated Testing** — Tests individual agents and the complete workflow.
+* 🔐 **Environment Configuration** — Keeps API credentials outside the source code.
+* 📊 **Task State Tracking** — Tracks workflow progress from planning through verification.
 
-* 🧠 Planner Agent — Breaks a user task into practical execution steps.
-* ⚙️ Worker Agent — Executes the task using the generated plan.
-* 🔍 Verifier Agent — Validates the worker's result.
-* 🎯 Orchestrator— Coordinates the complete multi-agent workflow.
-* 🤖 Gemini Integration — Uses Google's Gemini API for AI-powered planning and execution.
-* 🧪 Automated Testing — Tests individual agents and the complete workflow.
-* 🔐 Environment Configuration — Keeps API credentials outside the source code.
-* 📊 Task State Tracking — Tracks workflow progress from planning through verification.
+---
 
+## 🏗️ Architecture
 
+```text
+                     User Task
+                         │
+                         ▼
+              ┌────────────────────┐
+              │   Planner Agent    │
+              │                    │
+              │ Creates a plan     │
+              └─────────┬──────────┘
+                        │
+                 Execution Plan
+                        │
+                        ▼
+              ┌────────────────────┐
+              │    Worker Agent    │
+              │                    │
+              │ Executes the task  │
+              └─────────┬──────────┘
+                        │
+                   Task Result
+                        │
+                        ▼
+              ┌────────────────────┐
+              │   Verifier Agent   │
+              │                    │
+              │ Validates result   │
+              └─────────┬──────────┘
+                        │
+                        ▼
+                 Verified Result
+```
 
- 🏗️ Architecture
+### Workflow States
 
-
-                         User Task
-                             │
-                             ▼
-                  ┌────────────────────┐
-                  │   Planner Agent    │
-                  │                    │
-                  │ Creates a plan     │
-                  └─────────┬──────────┘
-                            │
-                     Execution Plan
-                            │
-                            ▼
-                  ┌────────────────────┐
-                  │    Worker Agent    │
-                  │                    │
-                  │ Executes the task  │
-                  └─────────┬──────────┘
-                            │
-                       Task Result
-                            │
-                            ▼
-                  ┌────────────────────┐
-                  │   Verifier Agent   │
-                  │                    │
-                  │ Validates result   │
-                  └─────────┬──────────┘
-                            │
-                            ▼
-                     Verified Result
-
-
- Workflow States
-
-
+```text
 PENDING
    │
    ▼
@@ -73,54 +73,37 @@ VERIFYING
    │
    ▼
 COMPLETED
-
+```
 
 If an agent or workflow step fails, the system transitions to:
 
-
+```text
 FAILED
+```
 
+---
 
+## 🔄 How It Works
 
-
- 🔄 How It Works
-
- 1. Planner
+### 1. Planner
 
 The Planner receives the user's task and uses Gemini to generate a structured execution plan.
 
- 2. Worker
+### 2. Worker
 
 The Worker receives the original task and generated plan, then uses Gemini to produce the requested result.
 
- 3. Verifier
+### 3. Verifier
 
 The Verifier checks whether the Worker produced a valid result and whether the workflow completed successfully.
 
- 4. Orchestrator
+### 4. Orchestrator
 
 The Orchestrator manages the complete workflow, coordinates the agents, and tracks the task state.
 
+---
 
-User Task
-    ↓
-Planner
-    ↓
-Execution Plan
-    ↓
-Worker
-    ↓
-Task Result
-    ↓
-Verifier
-    ↓
-Verified Result
-
-
-
-
- 📁 Project Structure
-
+## 📁 Project Structure
 
 ```text
 AgentOps/
@@ -147,28 +130,25 @@ AgentOps/
 └── requirements.txt
 ```
 
+---
 
+## 🛠️ Technology Stack
 
+| Technology               | Purpose                         |
+| ------------------------ | ------------------------------- |
+| **Python 3.14+**         | Application and agent logic     |
+| **Google Gemini API**    | AI planning and task execution  |
+| **google-genai**         | Gemini API integration          |
+| **pytest**               | Automated testing               |
+| **python-dotenv**        | Environment variable management |
+| **Dataclasses**          | Structured application models   |
+| **REST API Integration** | Communication with the AI model |
 
+---
 
+## 🚀 Getting Started
 
-🛠️ Technology Stack
-
-| Technology          | Purpose                         |
-| --------------------| ------------------------------- |
-| Python 3.14+        | Application and agent logic     |
-| Google Gemini API   | AI planning and task execution  |
-| google-genai        | Gemini API integration          |
-| pytest              | Automated testing               |
-| python-dotenv       | Environment variable management |
-| Dataclasses         | Structured application models   |
-| REST/API Integratio | Communication with the AI model |
-
-
-
-🚀 Getting Started
-
- Requirements
+### Requirements
 
 Before running the project, make sure you have:
 
@@ -177,71 +157,70 @@ Before running the project, make sure you have:
 * Python virtual environment
 * Git
 
-1. Clone the Repository
+### 1. Clone the Repository
 
-
+```powershell
 git clone https://github.com/linajawad/AgentOps.git
 cd AgentOps
+```
 
-
- 2. Create a Virtual Environment
+### 2. Create a Virtual Environment
 
 On Windows PowerShell:
 
-
+```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
+```
 
+### 3. Install Dependencies
 
- 3. Install Dependencies
-
-
+```powershell
 pip install -r requirements.txt
+```
 
+### 4. Configure Environment Variables
 
-4. Configure Environment Variables
+Create a `.env` file in the project root:
 
-Create a .env file in the project root:
-
-
+```env
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-3.6-flash
+```
 
+**Never commit your real API key to GitHub.**
 
-Never commit your real API key to GitHub.
+A `.env.example` file is included as a safe configuration template.
 
-A .env.example file is included as a safe configuration template.
+---
 
-
-▶️ Run the Application
+## ▶️ Run the Application
 
 With the virtual environment activated:
 
-
+```powershell
 python -m app.main
-
+```
 
 The application runs the complete:
 
-
-Planner → Worker → Verifier
-
+**Planner → Worker → Verifier**
 
 workflow and displays the result in the terminal.
 
+---
 
-
- 🧪 Testing
+## 🧪 Testing
 
 Run the automated test suite:
 
-
+```powershell
 pytest
+```
 
+### Current Test Result
 
- Current Test Result
-
-7 tests passed**
+**7 tests passed**
 
 The test suite covers:
 
@@ -253,15 +232,15 @@ The test suite covers:
 * Verifier error handling
 * End-to-end orchestration
 
-
+```text
 7 passed
-
+```
 
 The tests help verify both individual agent behavior and the complete multi-agent workflow.
 
+---
 
-
-🎯 What This Project Demonstrates
+## 🎯 What This Project Demonstrates
 
 This project demonstrates practical experience with:
 
@@ -281,25 +260,17 @@ Rather than relying on a single AI call, the system separates responsibilities a
 
 This makes the workflow easier to test, verify, debug, and extend.
 
+---
 
+## 📌 Project Status
 
-📌 Project Status
-
- Current
+### Current
 
 The core multi-agent workflow is implemented and tested:
 
+**Planner → Worker → Verifier → Completed**
 
-Planner
-   ↓
-Worker
-   ↓
-Verifier
-   ↓
-Completed
-
-
-Future Improvements
+### Future Improvements
 
 Potential future enhancements include:
 
@@ -313,11 +284,11 @@ Potential future enhancements include:
 * More extensive integration testing
 * Automated evaluation metrics
 
+---
 
+## 👩‍💻 Author
 
- 👩‍💻 Author
-
-Lina Jawad
+**Lina Jawad**
 
 AI Automation & Agent-Orchestration Project
 
