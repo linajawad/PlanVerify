@@ -1,4 +1,4 @@
-# AgentOps — Multi-Agent AI Workflow
+# PlanVerify — Multi-Agent AI Workflow
 
 A lightweight multi-agent AI workflow built with Python and Google Gemini.
 
