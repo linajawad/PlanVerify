@@ -1,127 +1,151 @@
 # PlanVerify — Multi-Agent AI Workflow
 
-A lightweight multi-agent AI workflow built with Python and Google Gemini.
+A lightweight multi-agent AI workflow built with **Python** and **Google Gemini**.
 
-PlanVerify demonstrates how multiple specialized AI agents can work together through a structured workflow:
+PlanVerify demonstrates how multiple AI agents can work together to plan, execute, and verify a task through a structured workflow.
+
+## 🚀 What It Does
+
+PlanVerify takes a user task and processes it through three specialized AI agents:
 
 **Planner → Worker → Verifier**
 
-The project focuses on AI agent orchestration, task planning, execution, verification, error handling, and automated testing.
+* **Planner Agent** — breaks a task into practical execution steps.
+* **Worker Agent** — executes the generated plan.
+* **Verifier Agent** — evaluates the result and determines whether it is valid.
+* **Orchestrator** — coordinates the complete workflow and manages task state.
+
+This design creates a simple foundation for building reliable, testable AI agent workflows.
 
 ---
 
-## ✨ Features
-
-* 🧠 **Planner Agent** — Breaks a user task into practical execution steps.
-* ⚙️ **Worker Agent** — Executes the task using the generated plan.
-* 🔍 **Verifier Agent** — Validates the worker's result.
-* 🎯 **Orchestrator** — Coordinates the complete multi-agent workflow.
-* 🤖 **Gemini Integration** — Uses Google's Gemini API for AI-powered planning and execution.
-* 🧪 **Automated Testing** — Tests individual agents and the complete workflow.
-* 🔐 **Environment Configuration** — Keeps API credentials outside the source code.
-* 📊 **Task State Tracking** — Tracks workflow progress from planning through verification.
-
----
-
-## 🏗️ Architecture
+## 🧠 Architecture
 
 ```text
-                     User Task
-                         │
-                         ▼
-              ┌────────────────────┐
-              │   Planner Agent    │
-              │                    │
-              │ Creates a plan     │
-              └─────────┬──────────┘
-                        │
-                 Execution Plan
-                        │
-                        ▼
-              ┌────────────────────┐
-              │    Worker Agent    │
-              │                    │
-              │ Executes the task  │
-              └─────────┬──────────┘
-                        │
-                   Task Result
-                        │
-                        ▼
-              ┌────────────────────┐
-              │   Verifier Agent   │
-              │                    │
-              │ Validates result   │
-              └─────────┬──────────┘
-                        │
-                        ▼
-                 Verified Result
+User Task
+    ↓
+Planner Agent
+    ↓
+Execution Plan
+    ↓
+Worker Agent
+    ↓
+Task Result
+    ↓
+Verifier Agent
+    ↓
+Verified Result
 ```
 
 ### Workflow States
 
 ```text
 PENDING
-   │
-   ▼
+   ↓
 PLANNING
-   │
-   ▼
+   ↓
 WORKING
-   │
-   ▼
+   ↓
 VERIFYING
-   │
-   ▼
+   ↓
 COMPLETED
 ```
 
-If an agent or workflow step fails, the system transitions to:
+If an error occurs during execution or verification:
 
 ```text
-FAILED
+        ↓
+      FAILED
 ```
+
+---
+
+## ✨ Features
+
+* 🤖 Multi-agent AI architecture
+* 🧩 Task planning and decomposition
+* ⚙️ AI-powered task execution
+* 🔍 Automated result verification
+* 🎯 Centralized workflow orchestration
+* 📊 Task state tracking
+* 🔌 Google Gemini API integration
+* 🧪 Automated testing with pytest
+* 🔐 Environment-based API configuration
+* ⚠️ Error handling and validation
+* 🐍 Modular Python project structure
 
 ---
 
 ## 🔄 How It Works
 
-### 1. Planner
+### 1. Planner Agent
 
-The Planner receives the user's task and uses Gemini to generate a structured execution plan.
+The Planner receives the user's task and converts it into a structured execution plan.
 
-### 2. Worker
+```text
+User Task
+   ↓
+Planner
+   ↓
+Execution Steps
+```
 
-The Worker receives the original task and generated plan, then uses Gemini to produce the requested result.
+The goal is to transform a high-level request into actionable steps.
 
-### 3. Verifier
+### 2. Worker Agent
 
-The Verifier checks whether the Worker produced a valid result and whether the workflow completed successfully.
+The Worker receives the generated plan and executes it using the configured Gemini model.
+
+```text
+Execution Plan
+   ↓
+Worker
+   ↓
+Task Result
+```
+
+### 3. Verifier Agent
+
+The Verifier evaluates the Worker result and determines whether it satisfies the expected requirements.
+
+```text
+Task Result
+   ↓
+Verifier
+   ↓
+Verified Result
+```
 
 ### 4. Orchestrator
 
-The Orchestrator manages the complete workflow, coordinates the agents, and tracks the task state.
+The Orchestrator coordinates the agents and controls the overall workflow:
+
+```text
+Planner
+   ↓
+Worker
+   ↓
+Verifier
+```
+
+It also manages workflow states and handles failures.
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-AgentOps/
+PlanVerify/
+│
 ├── app/
 │   ├── agents/
-│   │   ├── __init__.py
 │   │   ├── planner.py
 │   │   ├── worker.py
 │   │   └── verifier.py
 │   │
-│   ├── __init__.py
-│   ├── config.py
-│   ├── main.py
-│   ├── models.py
-│   └── orchestrator.py
+│   └── main.py
 │
 ├── tests/
-│   ├── __init__.py
 │   └── test_agents.py
 │
 ├── .env.example
@@ -134,34 +158,34 @@ AgentOps/
 
 ## 🛠️ Technology Stack
 
-| Technology               | Purpose                         |
-| ------------------------ | ------------------------------- |
-| **Python 3.14+**         | Application and agent logic     |
-| **Google Gemini API**    | AI planning and task execution  |
-| **google-genai**         | Gemini API integration          |
-| **pytest**               | Automated testing               |
-| **python-dotenv**        | Environment variable management |
-| **Dataclasses**          | Structured application models   |
-| **REST API Integration** | Communication with the AI model |
+| Technology        | Purpose                            |
+| ----------------- | ---------------------------------- |
+| Python 3.14+      | Application development            |
+| Google Gemini API | AI agent reasoning and execution   |
+| `google-genai`    | Gemini API integration             |
+| `pytest`          | Automated testing                  |
+| `python-dotenv`   | Environment variable management    |
+| Dataclasses       | Structured task and workflow state |
+| REST API          | API-based AI integration           |
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Getting Started
 
-### Requirements
+### Prerequisites
 
-Before running the project, make sure you have:
+You will need:
 
 * Python 3.14+
-* A Google Gemini API key
-* Python virtual environment
+* Google Gemini API key
 * Git
+* A virtual environment
 
 ### 1. Clone the Repository
 
-```powershell
-git clone https://github.com/linajawad/AgentOps.git
-cd AgentOps
+```bash
+git clone https://github.com/linajawad/PlanVerify.git
+cd PlanVerify
 ```
 
 ### 2. Create a Virtual Environment
@@ -175,7 +199,7 @@ python -m venv venv
 
 ### 3. Install Dependencies
 
-```powershell
+```bash
 pip install -r requirements.txt
 ```
 
@@ -188,41 +212,31 @@ GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-3.6-flash
 ```
 
-**Never commit your real API key to GitHub.**
+> Keep your `.env` file private. Do not commit API keys to GitHub.
 
-A `.env.example` file is included as a safe configuration template.
+### 5. Run the Application
 
----
-
-## ▶️ Run the Application
-
-With the virtual environment activated:
-
-```powershell
+```bash
 python -m app.main
 ```
-
-The application runs the complete:
-
-**Planner → Worker → Verifier**
-
-workflow and displays the result in the terminal.
 
 ---
 
 ## 🧪 Testing
 
-Run the automated test suite:
+The project includes automated tests using `pytest`.
 
-```powershell
+Run:
+
+```bash
 pytest
 ```
 
-### Current Test Result
+Current test suite:
 
 **7 tests passed**
 
-The test suite covers:
+The tests cover:
 
 * Planner task generation
 * Empty task validation
@@ -230,59 +244,49 @@ The test suite covers:
 * Gemini worker execution
 * Verifier validation
 * Verifier error handling
-* End-to-end orchestration
-
-```text
-7 passed
-```
-
-The tests help verify both individual agent behavior and the complete multi-agent workflow.
+* End-to-end workflow orchestration
 
 ---
 
 ## 🎯 What This Project Demonstrates
 
-This project demonstrates practical experience with:
+PlanVerify demonstrates practical experience with:
 
-* Multi-agent AI architecture
+* Multi-agent AI system design
 * Agent orchestration
 * Prompt-based task planning
 * AI task execution
-* Result verification
+* Automated result verification
 * Workflow state management
-* API integration
-* Environment-based configuration
-* Automated testing
-* Error handling
+* Google Gemini API integration
+* REST API integration
 * Python application structure
-
-Rather than relying on a single AI call, the system separates responsibilities across specialized agents.
-
-This makes the workflow easier to test, verify, debug, and extend.
+* Automated testing
+* Input validation
+* Error handling
+* Environment configuration
 
 ---
 
 ## 📌 Project Status
 
-### Current
+**Current status: Core workflow implemented and tested.**
 
-The core multi-agent workflow is implemented and tested:
-
-**Planner → Worker → Verifier → Completed**
+The Planner, Worker, Verifier, and Orchestrator workflow is implemented with automated test coverage.
 
 ### Future Improvements
 
 Potential future enhancements include:
 
 * Persistent task history
-* More advanced verification logic
+* Advanced verification strategies
 * Additional specialized agents
-* Agent observability
-* Workflow dashboards
-* Structured execution logs
 * Retry and recovery mechanisms
-* More extensive integration testing
-* Automated evaluation metrics
+* Structured logging
+* Observability
+* Evaluation metrics
+* Integration testing
+* Monitoring dashboard
 
 ---
 
@@ -290,6 +294,6 @@ Potential future enhancements include:
 
 **Lina Jawad**
 
-AI Automation & Agent-Orchestration Project
+AI Automation • AI Agent Testing • QA Automation • Python • API Integration • Cybersecurity
 
-Built as a practical project demonstrating how multiple AI agents can collaborate through a controlled, testable workflow.
+GitHub: [@linajawad](https://github.com/linajawad)
