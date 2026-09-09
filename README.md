@@ -2,7 +2,7 @@
 
 A lightweight multi-agent AI workflow built with Python and Google Gemini.
 
-AgentOps demonstrates how multiple specialized AI agents can work together through a structured workflow:
+PlanVerify demonstrates how multiple specialized AI agents can work together through a structured workflow:
 
 **Planner → Worker → Verifier**
 
